@@ -16,7 +16,7 @@ private LoginView loginView;
 			isExistingUser=Repository.getInstance().addUser(userName,emailId,phoneNumber,password);
 		else if(user.equals("requiter"))
 		{
-			isExistingUser=Repository.getInstance().addRequiter(userName,emailId,phoneNumber,password);
+			isExistingUser=Repository.getInstance().addRecruiter(userName,emailId,phoneNumber,password);
 		}
 			
 		return isExistingUser;	

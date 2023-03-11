@@ -32,13 +32,13 @@ public class LoginView {
 					if (user.equals("jobSeeker")) {
 						System.out.println("job seeker profile added");
 						loginOptions(user);
-					} else if (user.equals("requiter")) {
+					} else if (user.equals("recruiter")) {
 						System.out.println("recuiter seeker profile added");
 						loginOptions(user);
 					}
 				}
 			case '3':
-				System.exit(0);
+				askAgain = false;
 				break;
 			default:
 				System.out.println("Invalid Option");
@@ -59,9 +59,9 @@ public class LoginView {
 				if (user.equals("jobSeeker")) {
 					JobSeekerView jobSeekerView = new JobSeekerView(emailId);
 					jobSeekerView.jobSeekerOptions(emailId);
-				} else if (user.equals("requiter")) {
-					RecruiterView requiter = new RecruiterView();
-					requiter.index(emailId);
+				} else if (user.equals("recruiter")) {
+					RecruiterView recruiter = new RecruiterView();
+					recruiter.jobRecruiterOptions(emailId);
 				}
 			} else {
 				System.out.println("Invalid data");
@@ -105,4 +105,5 @@ public class LoginView {
 	public void invalidCredentials(String errMsg) {
 		System.out.println(errMsg);
 	}
+
 }

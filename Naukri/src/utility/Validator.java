@@ -1,8 +1,9 @@
 package utility;
 import java.time.LocalDate;
+import java.util.Scanner;
 import java.util.regex.*;
 public class Validator {
-	
+	private static Scanner scanner = new Scanner(System.in);
 	public static boolean validateEmail(String email) {
 		Pattern pattern = Pattern.compile("[a-z][a-z0-9]*@[a-z0-9]+[.][com]");
 		Matcher matcher = pattern.matcher(email);
@@ -22,7 +23,7 @@ public class Validator {
 	public static boolean validateDate(String startDate,String endDate) {
 		Pattern  pattern = Pattern.compile("[0-9]{4}+[-]+[0-1][0-9]+[-]+[0-3][0-9]");
 		Matcher m1 = pattern.matcher(startDate);
-		Matcher m2  = pattern.matcher(endDate);
+		Matcher m2 = pattern.matcher(endDate);
 		if(!(m1.matches()) && m2.matches())
 			return false;
 		LocalDate  date1 = LocalDate.parse(startDate);
@@ -42,7 +43,18 @@ public class Validator {
 			return false;
 		}
 		return false;
-		
 	}
-
+	public static boolean isString(String string) {
+		Pattern pattern = Pattern.compile("[a-zA-Z]+");
+		Matcher matcher = pattern.matcher(string);
+		return matcher.matches() ? true : false;
+	}
+	public static String getString() {
+		String string = scanner.next();
+		return isString(string) ? string : getString();
+	}
+	public static LocalDate getDate() {
+		String date = getString();
+		return validateDate(date) ? LocalDate.parse(date) : getDate();
+	}
 }
