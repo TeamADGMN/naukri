@@ -3,7 +3,7 @@ package com.jobseek.login;
 import com.repository.Repository;
 
 public class LoginModel {
-private LoginView loginView;
+	private LoginView loginView;
 	public LoginModel(LoginView loginView) {
 		this.loginView  = loginView;
 	}

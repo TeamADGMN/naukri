@@ -1,8 +1,9 @@
 package com.jobseek.recruiter;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import com.jobseek.login.LoginView;
+import com.jobseek.dto.JobPosts;
 import com.repository.Repository;
 
 public class RecruiterViewModel {
@@ -18,7 +19,13 @@ public class RecruiterViewModel {
 		Repository.getInstance().addPost(emailID, role, description, ctcPackage, skills, experience, deadline);
 		recruiterView.addedSuccessfully();
     }
-	
-	
+
+	public List<JobPosts> getPosts(String emailId) {
+		return Repository.getInstance().getPosts(emailId);
+	}
+
+	public void deletePost(int job_id) {
+		Repository.getInstance().deletePost(job_id);
+	}
 
 }

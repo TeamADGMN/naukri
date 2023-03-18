@@ -49,12 +49,25 @@ public class Validator {
 		Matcher matcher = pattern.matcher(string);
 		return matcher.matches() ? true : false;
 	}
+	public static boolean isStringLine(String string) {
+		Pattern pattern = Pattern.compile("[a-zA-Z ]+");
+		Matcher matcher = pattern.matcher(string);
+		return matcher.matches() ? true : false;
+	}
 	public static String getString() {
 		String string = scanner.next();
-		return isString(string) ? string : getString();
+		if(!isString(string)) getStringLine();
+		return string;
+	}
+	public static String getStringLine() {
+		scanner.nextLine();
+		String string = scanner.nextLine();
+		if(!isStringLine(string)) getStringLine();
+		return string;
 	}
 	public static LocalDate getDate() {
-		String date = getString();
-		return validateDate(date) ? LocalDate.parse(date) : getDate();
+		String date = scanner.next();
+		if(!validateDate(date)) getDate();
+		return LocalDate.parse(date);
 	}
 }
